@@ -1,9 +1,7 @@
-
-
 function App() {
   return (
     <>
-      심선생님
+      번개장터 
     </>
   );
 }

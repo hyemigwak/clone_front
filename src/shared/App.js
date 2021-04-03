@@ -1,7 +1,11 @@
+import React from "react";
+import Home from "../pages/Home";
+
+
 function App() {
   return (
     <>
-      번개장터2
+      <Home/>
     </>
   );
 }

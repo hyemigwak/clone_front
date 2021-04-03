@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      번개장터 
+      번개장터2
     </>
   );
 }

@@ -8,11 +8,13 @@ import "./App.css";
 import Header from "../components/Header";
 import Detail from "../pages/Detail";
 import Footer from "../components/Footer";
+import Top from "../components/Top";
 
 
 function App() {
   return (
     <>
+    <Top />
     <Header />
       <ConnectedRouter history={history}>
         <Route path="/" exact component={Home} />

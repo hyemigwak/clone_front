@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import appdown from "../image/appdown.svg";
-import star from "../image/star.svg";
 import header_logo from "../image/header-logo.svg";
 import search from "../image/search.png";
 import talk from "../image/talk.png";
@@ -10,61 +8,6 @@ import sell from "../image/sell.png";
 import hbg from "../image/hbg.png";
 import arrowRight from "../image/arrowRight.png";
 
-const Top = styled.div`
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid rgb(238, 238, 238);
-`;
-const TopContainer = styled.div`
-  width: 1024px;
-  display: flex;
-  justify-content: space-between;
-`;
-const TopMenu = styled.div`
-  display: flex;
-  flex-shrink: 0;
-`;
-const StyledA = styled.a`
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: rgb(102, 102, 102);
-  padding: 0 15px;
-  position: relative;
-  line-height: 1.4;
-  text-decoration: none;
-  cursor: pointer;
-  img {
-    margin-right: 5px;
-    vertical-align: ceter;
-    border-style: none;
-  }
-`;
-const TopButton = styled.button`
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: rgb(102, 102, 102);
-  padding: 0 15px;
-  position: relative;
-  line-height: 1.4;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  border-color: none;
-  border: none;
-  &:hover,
-  :focus {
-    outline: none;
-  }
-  img {
-    margin-right: 5px;
-    vertical-align: ceter;
-    border-style: none;
-  }
-`;
 const MainHeader = styled.div`
   position: sticky;
   display: flex;
@@ -167,6 +110,16 @@ const HeaderRightA = styled.a`
     height: 24px;
     margin-right: 5px;
   }
+    &::after{
+    content: "";
+    width: 1px;
+    height: 10px;
+    border-right: 1px solid rgb(204, 204, 204);
+    position: absolute;
+    top: 8px;
+    right: -15px;
+  }
+
 `;
 const MainHeaderBottom = styled.div`
     display: flex;
@@ -197,25 +150,6 @@ const SellerInfoA = styled.a`
 `
 const Header = () => {
   return (
-    <div>
-      <Top>
-        <TopContainer>
-          <TopMenu>
-            <StyledA>
-              <img src={appdown} alt="ddd" />
-              앱다운로드
-            </StyledA>
-            <TopButton>
-              <img src={star} alt="favorite" />
-              즐겨찾기
-            </TopButton>
-          </TopMenu>
-          <TopMenu>
-            <TopButton>로그인/회원가입</TopButton>
-            <TopButton>내상점</TopButton>
-          </TopMenu>
-        </TopContainer>
-      </Top>
       <MainHeader>
         <MainHeaderContainer>
           <MainHeaderTop>
@@ -256,7 +190,6 @@ const Header = () => {
         </MainHeaderBottom>
         </MainHeaderContainer>
       </MainHeader>
-    </div>
   );
 };
 

@@ -12,7 +12,7 @@ const initialState = {
   isLoading: false,
 };
 
-const mockAPl = 'https://run.mocky.io/v3/8cd1d27f-56b5-412a-825a-09c4f450fedf'
+const mockAPl = 'https://run.mocky.io/v3/ce3bcb61-6cb3-471d-bc40-e3243360b529'
 
 const getProductsAPI = () => {
   return function (dispatch, getState, { history }) {

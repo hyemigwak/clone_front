@@ -48,7 +48,7 @@ const H2 = styled.h2`
     margin-bottom: 24px;
 `
 const Section = styled.section`
-width: 1024px;
+    width: 1024px;
     margin: auto;
     padding: 3.5rem 0px 1.5rem;
 `

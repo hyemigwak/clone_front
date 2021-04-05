@@ -87,7 +87,7 @@ const List = styled.div`
         margin: 0px 15px 0px 15px;
         content:"|";
     }
-    .a:last-child::after{
+    a:last-child::after{
         content:"";
     }
 `;

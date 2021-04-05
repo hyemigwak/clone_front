@@ -74,8 +74,8 @@ const MainHeader = styled.div`
   background: rgb(255, 255, 255);
   z-index: 10;
   border-bottom: 1px solid rgb(238, 238, 238);
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 `;
 const MainHeaderContainer = styled.div`
   display: flex;

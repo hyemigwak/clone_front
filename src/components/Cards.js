@@ -1,98 +1,91 @@
-import React from 'react'
-import styled from 'styled-components'
-
+import React from "react";
+import styled from "styled-components";
+import {history} from '../redux/configureStore'
 
 const Cards = (props) => {
-    const {product_image, name, price} = props.data
-    console.log(props)
-    return (
-        <Card>
-            <CardInner>
-                <CardHead>
-                    <img src={product_image} alt="product"/>
-                    <Sth />
-                </CardHead>
-                <CardContents>
-                    <ItemName>
-                        {name}
-                    </ItemName>
-                    <ItemContentBottom>
-                        <Price>
-                        {price}
-                        </Price>
-                        <Time>
-                            2시간 전
-                        </Time>
-                        </ItemContentBottom>
-                </CardContents>
-            </CardInner>
-        </Card>
-    )
-}
+  const { product_image, name, price,pid } = props.data;
+  return (
+    <Card>
+      <CardInner onClick={()=>history.push(`/product/${pid}`)}>
+        <CardHead>
+          <img src={product_image} alt="product" />
+          <Sth />
+        </CardHead>
+        <CardContents>
+          <ItemName>{name}</ItemName>
+          <ItemContentBottom>
+            <Price>{price} </Price>
+            <Time>2시간 전</Time>
+          </ItemContentBottom>
+        </CardContents>
+      </CardInner>
+    </Card>
+  );
+};
 
 const Card = styled.div`
-    width: 196px;
-    margin-right: 11px;
-    margin-bottom: 11px;
-    &:nth-child(5n){
-       margin-right: 0; 
-    }
-
-` 
+  width: 196px;
+  margin-right: 11px;
+  margin-bottom: 11px;
+  &:nth-child(5n) {
+    margin-right: 0;
+  }
+`;
 const CardInner = styled.a`
-    border: 1px solid rgb(238, 238, 238);
-    background: rgb(255, 255, 255);
-    display: block;
-`
+  border: 1px solid rgb(238, 238, 238);
+  background: rgb(255, 255, 255);
+  display: block;
+`;
 
 const CardHead = styled.div`
-    position: relative;
-    width: 100%;
-    height: 194px;
-    img {
+  position: relative;
+  width: 100%;
+  height: 194px;
+  img {
     vertical-align: bottom;
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
-
   }
-    
-`
+`;
 
-const Sth = styled.div`
-`
+const Sth = styled.div``;
 const CardContents = styled.div`
-padding: 15px 10px;
-    height: 80px;
-`
+  padding: 15px 10px;
+  height: 50px;
+`;
 const ItemName = styled.div`
-position: relative;
-    font-size: 14px;
-    padding-bottom: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-`
+  position: relative;
+  font-size: 14px;
+  padding-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
 
 const ItemContentBottom = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20px;
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+`;
 
 const Price = styled.div`
-    font-size: 16px;
-    font-weight: 600;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-
-`
+  font-size: 16px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  &::after{
+    content: "원";
+    font-size: 13px;
+    margin-left: 3px;
+  }
+`;
 const Time = styled.div`
-font-size: 12px;
-    color: rgb(136, 136, 136);
-`
-export default Cards
+  font-size: 12px;
+  color: rgb(136, 136, 136);
+`;
+export default Cards;

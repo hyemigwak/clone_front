@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */ /* eslint-disable react/jsx-no-target-blank */ /* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from 'react';
 import styled from "styled-components";
 import logo from ".././image/logo.png";
@@ -11,15 +13,15 @@ const Footer = () => {
         <>
             <BottomList>
                 <List>
-                    <a onClick={()=> window.open("https://m.bunjang.co.kr/customer/notice", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>공지사항</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://m.bunjang.co.kr/customer/faq/1", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>자주묻는질문</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/service-policy.html", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>운영정책</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://m.bunjang.co.kr/qna", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>1:1문의사항</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1138645836", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>사업자정보확인</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/service.html", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>이용약관</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/privacy.html", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>개인정보처리방침</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/youth-policy.html", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>청소년보호정책</span><Stick>|</Stick></a>
-                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/location.html", '_blank')} ><span style={{cursor:"pointer", textDecoration:"none"}}>위치기반서비스 이용약관</span></a>
+                    <a onClick={()=> window.open("https://m.bunjang.co.kr/customer/notice", '_blank')} >공지사항</a>
+                    <a onClick={()=> window.open("https://m.bunjang.co.kr/customer/faq/1", '_blank')}>자주묻는질문</a>
+                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/service-policy.html", '_blank')} >운영정책</a>
+                    <a onClick={()=> window.open("https://m.bunjang.co.kr/qna", '_blank')}> 1:1문의사항 </a>
+                    <a onClick={()=> window.open("http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1138645836", '_blank')}> 사업자정보확인</a>
+                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/service.html", '_blank')}> 이용약관</a>
+                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/privacy.html", '_blank')}> 개인정보처리방침</a>
+                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/youth-policy.html", '_blank')}> 청소년보호정책</a>
+                    <a onClick={()=> window.open("https://terms.bunjang.co.kr/terms/location.html", '_blank')}> 위치기반서비스 이용약관</a>
                 </List>
             </BottomList>
             <div style={{width:"1024px", margin: "30px auto 0px"}}>    
@@ -27,8 +29,11 @@ const Footer = () => {
                     <div>
                         <div style={{display:"flex", alignItems:"center"}}>
                             <img style={{height: "24px", marginRight:"16px"}} src={logo} alt="bunjang-logo"/>
-                            <a style={{textDecoration:"none"}} target="_blank" href="https://www.notion.so/BUNJANG-35a8c66ae6ce4ac187625c297925ae96"><img style={{width: "16px", marginRight:"5px"}} src={notion} alt="notion-image"/>
-                            <Text>회사소개</Text></a>
+                            <div style={{display:"flex"}}>
+                                <a style={{textDecoration:"none"}} target="_blank" href="https://www.notion.so/BUNJANG-35a8c66ae6ce4ac187625c297925ae96">
+                                <img style={{width: "16px", marginRight:"5px"}} src={notion} alt="notion-image"/>
+                                <Text>회사소개</Text></a>
+                            </div>
                         </div>
                         <div style ={{marginTop: "5px"}}>
                             <Text>누구나, 무엇이든 쉽고 편하고 안전하게 거래하는 세상을 꿈꾸고 있습니다.</Text>
@@ -73,15 +78,18 @@ const BottomList = styled.div`
 
 `;
 
-const Stick = styled.text`
-    margin: 0px 18px 0px 18px;
-`;
-
 const List = styled.div`
     margin: 22px auto;
     width: 1024px;
     color: #4D4D4D;
     font-size: 13px;
+    a::after {
+        margin: 0px 15px 0px 15px;
+        content:"|";
+    }
+    .a:last-child::after{
+        content:"";
+    }
 `;
 
 const Container = styled.div`
@@ -96,7 +104,7 @@ const CompanyInfo = styled.div`
     font-size: 13px;
 `;
 
-const Text = styled.text`
+const Text = styled.span`
     size: 14px;
     color: #212121;
 `;

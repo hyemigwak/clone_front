@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const LOADING = "LOADING";
 const SET_PRODUCTS = "SET_PRORUCTS"
+ 
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 const setProducts = createAction(SET_PRODUCTS,(data)=>({data}))
 const initialState = {

@@ -13,13 +13,12 @@ input{
     border: 0px; 
 }
 
-body{
+body, div{
     margin: 0px;
     padding: 0px;
     border: 0px;
     font: inherit;
     vertical-align: baseline; 
-    font-family: 'Noto Sans KR', sans-serif; 
     font-size: 14px; 
 } 
 
@@ -30,10 +29,26 @@ a{
 } 
 
 button{
+    background-color: transparent;
     cursor: pointer;
-} 
+    outline: none;} 
 
 h2{
     font-weight: 400;
     margin: 0px; 
+}
+
+textarea{
+
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+    outline: 0px;
+    border: 0px;
+    overflow: auto;
+}
+
+::before,::after{
+    box-sizing: border-box;
 }

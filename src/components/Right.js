@@ -39,11 +39,11 @@ return (
 
 const ButtonWrapper = styled.div`
 position: absolute;
-bottom: 0px;
+bottom: 15px;
 left: 0px;
 display: flex;
 width: 100%;
-padding: 16px;
+/* padding: 16px; */
   * {
     flex: 1 1 0%;
     display: flex;
@@ -141,6 +141,7 @@ const Naver = styled.button`
 `;
 const SNSWrapper = styled.div`
   height: 50px;
+  padding-top: 6px;
   border-bottom: 1px solid rgb(33, 33, 33);
   display: flex;
   justify-content: flex-end;
@@ -149,6 +150,9 @@ const SNSWrapper = styled.div`
 
 const RightDiv = styled.div`
   width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export default Right;

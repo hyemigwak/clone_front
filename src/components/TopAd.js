@@ -17,34 +17,34 @@ const TopAd = () => {
                 <RelatedProduct>
                     <RelatedLeft>
                         <RelatedText>연관상품</RelatedText>
-                        <AdIcon><div>AD</div><img src={information}/></AdIcon>
+                        <AdIcon><div>AD</div><img src={information} alt='info'/></AdIcon>
                     </RelatedLeft>
                     <RelatedRightText>1/4</RelatedRightText>
                 </RelatedProduct>
                 <ImgContainer>
                     <Buttonprev><img style={{width:"9px", height:"14px"}} src={prevblack} alt="이전페이지"/></Buttonprev>
                     <ImageBox1>
-                        <img style={{width:"155px",height:"159px"}}src={sample1}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample1} alt='info'/>
                         <ImageText>3세 여아 외출복 세트</ImageText>
                     </ImageBox1>
                     <ImageBox>
-                        <img style={{width:"155px",height:"159px"}}src={sample2}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample2} alt='info'/>
                         <ImageText>남자 기본 슬립온 블랙</ImageText>
                     </ImageBox>
                     <ImageBox>
-                        <img style={{width:"155px",height:"159px"}}src={sample3}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample3} alt='info'/>
                         <ImageText>유아 인형 거의 새 상품</ImageText>
                     </ImageBox>
                     <ImageBox>
-                        <img style={{width:"155px",height:"159px"}}src={sample4}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample4} alt='info'/>
                         <ImageText>아디다스 슈퍼스타 160</ImageText>
                     </ImageBox>
                     <ImageBox>
-                        <img style={{width:"155px",height:"159px"}}src={sample5}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample5} alt='info'/>
                         <ImageText>짱구 피카츄 외 인형 팔아요</ImageText>
                     </ImageBox>
                     <ImageBox>
-                        <img style={{width:"155px",height:"159px"}}src={sample6}/>
+                        <img style={{width:"155px",height:"159px"}}src={sample6} alt='info'/>
                         <ImageText>제주도 에디션 라이언 인형</ImageText>
                     </ImageBox>
                     <Buttonnext><img style={{width:"9px", height:"14px"}} src={nextblack} alt="다음페이지"/></Buttonnext>

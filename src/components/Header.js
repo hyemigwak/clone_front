@@ -7,6 +7,7 @@ import mystore from "../image/mystore.png";
 import sell from "../image/sell.png";
 import hbg from "../image/hbg.png";
 import arrowRight from "../image/arrowRight.png";
+import { history } from "../redux/configureStore";
 
 const MainHeader = styled.div`
   position: sticky;
@@ -153,7 +154,7 @@ const Header = () => {
       <MainHeader>
         <MainHeaderContainer>
           <MainHeaderTop>
-            <LogoA>
+            <LogoA onClick={()=>history.push('/')}>
               <img src={header_logo} alt="logo" />
             </LogoA>
             <MainHeaderMiddle>

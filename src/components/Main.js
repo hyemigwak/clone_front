@@ -8,12 +8,13 @@ import Loading from '../shared/Loading';
 
 const Main = () => {
   const dispatch = useDispatch()
-  const mockProducts = useSelector((state) => state.products.product_list)
+  const products = useSelector((state) => state.products.product_list)
   const is_loading = useSelector((state) => state.products.is_loading);
 
   useEffect(() => {
-    dispatch(productActions.getProductsAPI())
-  }, [])
+      if(products.length <2){
+    dispatch(productActions.getProductsAPI())}
+  }, [products])
 
   if(is_loading){
         return(
@@ -23,7 +24,7 @@ const Main = () => {
         )
   }
 
-  if(!mockProducts){
+  if(!products){
       return(
           <>
           No data
@@ -36,7 +37,7 @@ const Main = () => {
             <H2>오늘의 상품 추천</H2>
             <ItemInfos>
                 <ItemContainer>
-                    {mockProducts.map((info, idx) =><Cards data = {info} key={idx} />)}
+                    {products.map((info, idx) =><Cards data = {info} key={idx} />)}
                 </ItemContainer>
             </ItemInfos>
             </Section>

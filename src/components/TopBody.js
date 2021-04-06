@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ContactModal from "./ContactModal";
 import styled from "styled-components";
-import Shirts from "../image/shirts.jpg";
 import appPoint from "../image/appPoint.png";
 import minieyes from "../image/minieyes.png";
 import miniheart from "../image/miniheart.png";
@@ -10,12 +10,28 @@ import redheart from "../image/redheart.svg";
 import whiteheart from "../image/whiteheart.svg";
 
 const TopBody = (props) => {
+    
     const {name,price,product_image,location,free_shipping,tradable} = props.data
+    
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+        document.body.style.overflow = "hidden";
+    }
+
+    const closeModal = () => {
+        setModalOpen(false);
+        document.body.style.overflow = "unset";
+    }
+    
     
     return (
         <div style={{width:"1024px", height:"490px", margin:"0 auto"}}>
             <ProductInfo>
-                <img style={{width:"428px", height:"428px"}} src={product_image} alt="이미지"/>
+                <ImageBox>
+                    <img style={{width:"428px", height:"428px"}} src={product_image} alt="이미지"/>
+                </ImageBox>
                 <Info>
                     <TitleInfo>
                         <Title>{name}</Title>
@@ -78,9 +94,10 @@ const TopBody = (props) => {
                             <Btngap>찜</Btngap>
                             <Btngap>2</Btngap>
                         </Button1>
-                        <Button2>연락하기</Button2>
+                        <Button2 onClick={openModal}>연락하기</Button2>
                         <Button3>바로구매</Button3>
                     </ButtonInfo>
+                    <ContactModal open={modalOpen} close={closeModal}/>
                 </Info>
             </ProductInfo>
         </div>
@@ -92,12 +109,16 @@ const ProductInfo = styled.div`
     padding: 30px 0px;
 `;
 
+const ImageBox = styled.div`
+    width: 428px;
+    height: 428px;
+`;
+
 const Info = styled.div`
-    width: 100%;
+    width: 554px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: justify;
     justify-content: space-between;
 
 `;
@@ -236,6 +257,7 @@ const LocationCertify = styled.div`
 const ButtonInfo = styled.div`
     display:flex;
     justify-content: space-evenly;
+    width: 554px;
     height: 56px;
     align-items: center;
 `;

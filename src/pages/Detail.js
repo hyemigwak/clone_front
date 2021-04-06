@@ -5,6 +5,7 @@ import TopCate from "../components/TopCate";
 import TopBody from "../components/TopBody";
 import TopAd from "../components/TopAd";
 import Loading from '../shared/Loading';
+import ContactModal from "../components/ContactModal";
 import { actionCreators as productActions } from "../redux/modules/products";
 
 
@@ -13,14 +14,16 @@ const Detail = (props) => {
     const id = props.match.params.id;
     const products = useSelector((state) => state.products.product_list);
     const is_loading = useSelector((state) => state.products.is_loading);
-    const products_idx = products.findIndex((p) => p.pid === Number(id));
+    const products_idx = products.findIndex((p) => p.pid === id);
     const post = products[products_idx];
+
     useEffect(()=>{
         if(post){
             return;
         }
         dispatch(productActions.getOneProductAPI(id))
     },[])
+
     if(is_loading){
         return(
             <>
@@ -46,7 +49,8 @@ const Detail = (props) => {
             <TopCate/>
             <TopBody data = {post} />
             <TopAd/>
-            <DetailInfo/>
+            <DetailInfo data = {post}/>
+            <ContactModal/>
             
         </div>
 }

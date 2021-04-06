@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import location from "../image/location.png";
+import locationIcon from "../image/locationIcon.png";
 import category from "../image/category.png";
 import tag from "../image/tag.png";
 import confirm from "../image/confirm.png";
 import Comment from "./Comment";
 const Left = (props) => {
+
+  const {description,location} = props.data
+
 
 return (
     <LeftDiv>
@@ -25,16 +28,16 @@ return (
         <ProductInfoBody>
             <Blank />
             <ProductInfoContent>
-            진짜 아예 새책입니다 ! 한번도 안펴봤어요 ☺️ ✅배송비는 2500 별도입니다 ✅ 원가 36900 에서 30000원으로 팔아요 !! 
+              {description} 
             </ProductInfoContent>
             <ProductInfoMore>
             <Location>
                 <ProductInfoMoreTtitle>
-                <img src={location} alt="location" />
+                <img src={locationIcon} alt="location" />
                 거래지역
                 </ProductInfoMoreTtitle>
                 <ProductInfoMoreDetail>
-                <span>전국</span>
+                <span>{location}</span>
                 </ProductInfoMoreDetail>
             </Location>
             <Category>

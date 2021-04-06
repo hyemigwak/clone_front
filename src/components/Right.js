@@ -6,7 +6,9 @@ import twitter from "../image/twitter.png";
 import url from "../image/url.png";
 import StoreInfo from "./StoreInfo";
 
-const Right = () => {
+const Right = (props) => {
+  
+
 return (
     <RightDiv>
     <SNSWrapper>
@@ -25,7 +27,7 @@ return (
       </SNSWrapper>
     <SotreInfoContainer>
         <StoreInfoInner>
-        <StoreInfo />
+        <StoreInfo data = {props.data} />
         
         </StoreInfoInner>
         <ButtonWrapper>

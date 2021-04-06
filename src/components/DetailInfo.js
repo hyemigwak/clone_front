@@ -4,10 +4,12 @@ import Left from './Left'
 import Right from './Right'
 
 const DetailInfo = (props) => {
+
+
     return (
         <InfoDiv>
-            <Left />
-            <Right />
+            <Left data = {props.data} />
+            <Right data = {props.data} />
             <PowerLink className='Powerlink' />
         </InfoDiv>
     )

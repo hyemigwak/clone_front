@@ -4,6 +4,8 @@ import seller_profile from '../image/seller_profile.png'
 import follow from '../image/follow.png'
 const StoreInfo = (props) => {
 
+    const {user_name} = props.data
+
     return (
         <>
         <StoreInfoTitle>
@@ -15,7 +17,7 @@ const StoreInfo = (props) => {
                     <img src={seller_profile} alt="seller"/>
                 </SellerProfile>
                 <SellerInfo>
-                    <SellerName>더더더</SellerName>
+                    <SellerName>{user_name}</SellerName>
                     <SellerMoreInfo>
                         <MoreInfo>상품1</MoreInfo>
                         <MoreInfo>팔로워0</MoreInfo>

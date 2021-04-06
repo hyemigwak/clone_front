@@ -19,9 +19,9 @@ const getProductsAPI = () => {
   return function (dispatch, getState, { history }) {
     dispatch(loading(true));
     axios
-      .get(products_API)
+      .get(mockAPl)
       .then((resp) => {
-        dispatch(setProducts(resp.data));
+        dispatch(setProducts(resp.data.mockProducts));
         dispatch(loading(false));
       })
       .catch((e) => console.error(e));
@@ -32,10 +32,10 @@ const getOneProductAPI = (id) => {
   return function (dispatch, getState, {history}) {
     dispatch(loading(true));
     axios
-    .get(products_API)
+    .get(mockAPl)
     .then((resp)=>{
-      const product_list = resp.data
-      const product_idx = product_list.findIndex(p => p.pid === Number(id));
+      const product_list = resp.data.mockProducts;
+      const product_idx = product_list.findIndex(p => p.pid === id);
       const product = product_list[product_idx];
       console.log(product);
       dispatch(setProducts([product]));

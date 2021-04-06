@@ -1,7 +1,80 @@
-import React from 'react'
+import React, {useState} from 'react'
+import LoginModal from "./LoginModal";
 import styled from 'styled-components'
 import appdown from "../image/appdown.svg";
 import star from "../image/star.svg";
+import {useSelector, useDispatch} from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
+import { history } from "../redux/configureStore";
+
+const Top = (props) => {
+  const dispatch = useDispatch()
+  const is_login = useSelector(state => state.user.is_login);
+
+  const siteLogOut = () => {
+    dispatch(userActions.logOut());
+    history.replace("/");
+  }
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+      setModalOpen(true);
+      document.body.style.overflow = "hidden";
+  }
+
+  const closeModal = () => {
+      setModalOpen(false);
+      document.body.style.overflow = "unset";
+  }
+
+  if(is_login){
+    return (
+      <TopWrapper>
+        <TopContainer>
+          <TopMenu>
+            <StyledA>
+              <img src={appdown} alt="ddd" />
+              앱다운로드
+            </StyledA>
+            <TopButton>
+              <img src={star} alt="favorite" />
+              즐겨찾기
+            </TopButton>
+          </TopMenu>
+          <TopMenu>
+            <TopButton onClick={siteLogOut}>로그아웃</TopButton>
+            <LoginModal open={modalOpen} close={closeModal}/>
+            <TopButton>내상점</TopButton>
+          </TopMenu>
+        </TopContainer>
+      </TopWrapper>
+    )
+  }else{
+    return (
+      <TopWrapper>
+        <TopContainer>
+          <TopMenu>
+            <StyledA>
+              <img src={appdown} alt="ddd" />
+              앱다운로드
+            </StyledA>
+            <TopButton>
+              <img src={star} alt="favorite" />
+              즐겨찾기
+            </TopButton>
+          </TopMenu>
+          <TopMenu>
+            <TopButton onClick={openModal}>로그인/회원가입</TopButton>
+            <LoginModal open={modalOpen} close={closeModal}/>
+            <TopButton>내상점</TopButton>
+          </TopMenu>
+        </TopContainer>
+      </TopWrapper>
+    )
+  }
+  
+}
 
 const TopWrapper = styled.div`
   height: 40px;
@@ -59,27 +132,5 @@ const TopButton = styled.button`
   }
 `;
 
-const Top = () => {
-    return (
-                  <TopWrapper>
-        <TopContainer>
-          <TopMenu>
-            <StyledA>
-              <img src={appdown} alt="ddd" />
-              앱다운로드
-            </StyledA>
-            <TopButton>
-              <img src={star} alt="favorite" />
-              즐겨찾기
-            </TopButton>
-          </TopMenu>
-          <TopMenu>
-            <TopButton>로그인/회원가입</TopButton>
-            <TopButton>내상점</TopButton>
-          </TopMenu>
-        </TopContainer>
-      </TopWrapper>
-    )
-}
 
 export default Top

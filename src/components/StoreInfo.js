@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import seller_profile from '../image/seller_profile.png'
 import follow from '../image/follow.png'
-const StoreInfo = () => {
+const StoreInfo = (props) => {
+
     return (
         <>
         <StoreInfoTitle>
@@ -14,7 +15,7 @@ const StoreInfo = () => {
                     <img src={seller_profile} alt="seller"/>
                 </SellerProfile>
                 <SellerInfo>
-                    <SellerName>올라곽선생</SellerName>
+                    <SellerName>더더더</SellerName>
                     <SellerMoreInfo>
                         <MoreInfo>상품1</MoreInfo>
                         <MoreInfo>팔로워0</MoreInfo>

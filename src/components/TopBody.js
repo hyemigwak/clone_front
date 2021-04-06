@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from "styled-components";
 import Shirts from "../image/shirts.jpg";
 import appPoint from "../image/appPoint.png";
@@ -9,16 +9,18 @@ import minitime from "../image/minitime.png";
 import redheart from "../image/redheart.svg";
 import whiteheart from "../image/whiteheart.svg";
 
-const TopBody = () => {
+const TopBody = (props) => {
+    const {name,price,product_image,location,free_shipping,tradable} = props.data
+    
     return (
         <div style={{width:"1024px", height:"490px", margin:"0 auto"}}>
             <ProductInfo>
-                <img style={{width:"428px", height:"428px"}} src={Shirts} alt="셔츠이미지"/>
+                <img style={{width:"428px", height:"428px"}} src={product_image} alt="이미지"/>
                 <Info>
                     <TitleInfo>
-                        <Title>유니클로 플란넬 셔츠 일괄판매</Title>
+                        <Title>{name}</Title>
                             <PriceBtn>
-                                <Pricing>30,000<span>원</span></Pricing>
+                                <Pricing>{price}<span>원</span></Pricing>
                                 <div className="Appimg"><img style={{width:"216px", height:"30px", cursor:"pointer"}} src={appPoint} alt="앱콘"/></div>
                             </PriceBtn>
                     </TitleInfo>
@@ -51,16 +53,16 @@ const TopBody = () => {
                         </div>
                         <div style={{display:"flex", marginBottom:"20px"}}>
                             <ListName>교환여부</ListName>
-                            <ListValue>교환불가능</ListValue>
+                            <ListValue>{tradable? "교환가능":"교환불가능"}</ListValue>
                         </div>
                         <div style={{display:"flex", marginBottom:"20px"}}>
                             <ListName>배송비</ListName>
-                            <ListValueDeliver>배송비 별도</ListValueDeliver>
+                            <ListValueDeliver>{free_shipping? "배송비포함" : "배송비별도"}</ListValueDeliver>
                         </div>
                         <div style={{display:"flex", marginBottom:"34px"}}>
                             <ListName>거래지역</ListName>
                             <ListValueLocation>
-                                경기도 시흥시 신천동
+                                {location}
                                 <LocationCertify>지역인증</LocationCertify>
                             </ListValueLocation>
                         </div>
@@ -233,7 +235,7 @@ const LocationCertify = styled.div`
 
 const ButtonInfo = styled.div`
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 56px;
     align-items: center;
 `;

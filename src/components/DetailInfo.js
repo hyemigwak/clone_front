@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Left from './Left'
 import Right from './Right'
 
-const DetailInfo = () => {
+const DetailInfo = (props) => {
     return (
         <InfoDiv>
             <Left />

@@ -5,7 +5,8 @@ import category from "../image/category.png";
 import tag from "../image/tag.png";
 import confirm from "../image/confirm.png";
 import Comment from "./Comment";
-const Left = () => {
+const Left = (props) => {
+
 return (
     <LeftDiv>
     <InfoTab>
@@ -24,9 +25,7 @@ return (
         <ProductInfoBody>
             <Blank />
             <ProductInfoContent>
-            새상품입니다 세로 약40cm 가로 약33cm(오차있을수있음)
-            교환.환불.교신 안합니다.죄송합니다. 꼼꼼히확인하시구
-            구매부탁드려요!!
+            진짜 아예 새책입니다 ! 한번도 안펴봤어요 ☺️ ✅배송비는 2500 별도입니다 ✅ 원가 36900 에서 30000원으로 팔아요 !! 
             </ProductInfoContent>
             <ProductInfoMore>
             <Location>

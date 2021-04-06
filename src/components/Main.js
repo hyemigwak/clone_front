@@ -10,6 +10,7 @@ const Main = () => {
   const dispatch = useDispatch()
   const mockProducts = useSelector((state) => state.products.product_list)
   const is_loading = useSelector((state) => state.products.is_loading);
+
   useEffect(() => {
     dispatch(productActions.getProductsAPI())
   }, [])

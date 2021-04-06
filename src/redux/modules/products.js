@@ -7,6 +7,7 @@ const SET_PRODUCTS = "SET_PRORUCTS"
  
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 const setProducts = createAction(SET_PRODUCTS,(data)=>({data}))
+
 const initialState = {
   product_list: [],
   isLoading: false,
@@ -27,6 +28,23 @@ const getProductsAPI = () => {
   };
 };
 
+const getOneProductAPI = (id) => {
+  return function (dispatch, getState, {history}) {
+    dispatch(loading(true));
+    axios
+    .get(mockAPl)
+    .then((resp)=>{
+      const product_list = resp.data.mockProducts;
+      const product_idx = product_list.findIndex(p => p.pid === id);
+      const product = product_list[product_idx];
+      console.log(product);
+      dispatch(setProducts(product));
+      dispatch(loading(false));
+    })
+    .catch((e) => console.error(e));
+  }
+}
+
 export default handleActions(
   {   
      [SET_PRODUCTS]: (state, action) =>
@@ -43,7 +61,8 @@ export default handleActions(
 );
 const actionCreators = {
   setProducts,
-  getProductsAPI
+  getProductsAPI,
+  getOneProductAPI
 };
 
 export { actionCreators };

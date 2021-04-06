@@ -4,6 +4,8 @@ import {history} from '../redux/configureStore'
 
 const Cards = (props) => {
   const { product_image, name, price,pid } = props.data;
+  
+  
   return (
     <Card>
       <CardInner onClick={()=>history.push(`/product/${pid}`)}>

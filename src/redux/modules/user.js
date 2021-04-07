@@ -26,13 +26,33 @@ const mockUserAPl = 'https://run.mocky.io/v3/ce3bcb61-6cb3-471d-bc40-e3243360b52
 
 const loginAPI = (username,pwd) => {
     return function (dispatch, getState, { history }) {
-        axios
-        .post(mockUserAPl)
-        .then((res)=>{
-            dispatch(logIn(username,pwd));
+        axios({
+            method: "POST",
+            url: "http://15.165.158.39/login",
+            headers: {
+                "Accept": "application/json", //클라이언트가 서버한테 요청하는 타입
+                "Content-Type":"application/json;charset=UTF-8", //현재 서버한테 보내는 데이터 타입
+                'Access-Control-Allow-Origin' : '*'
+            },
+            data: {
+                "username":username,
+                "password": pwd,
+            }
+        }).then((res)=>{
+            console.log(res);
+            localStorage.setItem("name", JSON.stringify(`${username}`));
+            sessionStorage.setItem("token", res.data.token);    
+            dispatch(logIn({
+                username:username,
+                password:pwd,
+            }));
             history.push("/");
-        })
-        .catch((e) => console.error(e));
+            window.alert("정상적으로 로그인 되었습니다!")
+        }).catch(error=>{
+            console.log(error);
+            window.alert("로그인 실패!");
+        });
+
     };
 };
 
@@ -60,6 +80,7 @@ const actionCreators = {
     logIn,
     logOut,
     getUser,
+    loginAPI,
 
 };
 

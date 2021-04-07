@@ -18,7 +18,7 @@ const Login = () => {
             window.alert("모두 입력해주세요")
             return;
         }
-        dispatch(userActions.logIn(username,pwd));
+        dispatch(userActions.loginAPI(username,pwd));
         history.push("/");
 
     }
@@ -41,7 +41,7 @@ const Login = () => {
                         </div>
                         <div>
                             <IDPW>PW</IDPW>
-                            <Input placeholder="비밀번호를 입력해주세요!" type="text" value={pwd} onChange={onChangePwd}/>
+                            <Input placeholder="비밀번호를 입력해주세요!" type="password" value={pwd} onChange={onChangePwd}/>
                         </div>
                     </div>
                         <LoginBtn onClick={LogIn}>로그인</LoginBtn>

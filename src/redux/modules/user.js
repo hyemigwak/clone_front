@@ -6,13 +6,11 @@ import axios from 'axios';
 const LOG_IN = "LOG_IN"; //로그인
 const LOG_OUT = "LOG_OUT"; //로그아웃
 const GET_USER = "GET_USER"; //유저정보 가져오기
-const SET_USER = "SET_USER"; //유저정보 추가
 
 
 //actionCreators
 const logIn = createAction(LOG_IN, (user) => ({user}));
 const logOut = createAction(LOG_OUT, (user) => ({user}));
-const setUser = createAction(SET_USER, (user) => ({user}));
 const getUser = createAction(GET_USER, (user) => ({user}));
 
 
@@ -65,13 +63,13 @@ const logOutApi = () =>{
         localStorage.removeItem("name");
         sessionStorage.removeItem("token");
         dispatch(logOut());
-        history.push("/");
+        history.replace("/");
     }
 
 }
 
 //회원가입api
-const SignUPApi = (username,email,pwd) => {
+const SignUPApi = (username,pwd) => {
     return function (dispatch, getState, { history }){
         axios({
             method: "POST",
@@ -84,15 +82,9 @@ const SignUPApi = (username,email,pwd) => {
             data: {
                 "username":username,
                 "password": pwd,
-                "email": email,
             }
         }).then((res)=>{
             console.log(res);
-            dispatch(setUser({
-                username:username,
-                password:pwd,
-                email:email,
-            }));
             history.push("/login");
             window.alert("축하합니다! 회원가입 되었습니다!")
         }).catch(error=>{
@@ -114,12 +106,8 @@ export default handleActions({
         draft.user = null;
         draft.is_login = false;
     }),
-    [SET_USER]: (state, action) => produce(state, (draft) => {
-        draft.user.push(action.payload.user);
-        draft.is_login = true;
-    }),
     [GET_USER]: (state, action) => produce(state, (draft) => {
-
+        
     }),
 
 }, initialState);
@@ -130,7 +118,6 @@ const actionCreators = {
     logIn,
     logOut,
     getUser,
-    setUser,
     loginAPI,
     logOutApi,
     SignUPApi,

@@ -2,10 +2,12 @@ import React, {useCallback} from 'react';
 import styled from "styled-components";
 import thunderlogo from "../image/thunderlogo.png";
 import { history } from "../redux/configureStore";
+import {useDispatch} from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 import Login from "./Login";
 
 const Signup = () => {
-
+    const dispatch = useDispatch();
     const [username, setUsername] = React.useState("");
     const [pwd, setPwd] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -15,6 +17,18 @@ const Signup = () => {
     const onChangemail = useCallback((e) => setEmail(e.target.value),[])
     const onChangepwdCheck = useCallback((e) => setPwdCheck(e.target.value),[])
     
+    const siteSignup = () => {
+
+        if(username === "" || pwd === "" || email === "" || pwdCheck === "") {
+            window.alert("모두 입력해주세요!");
+            return;
+        }
+        if(pwd !== pwdCheck){
+            window.alert("비밀번호가 일치하지 않습니다!");
+            return;
+        }
+        dispatch(userActions.SignUPApi(username,pwd));
+    }
     return (
         <div>
             <div>
@@ -45,7 +59,7 @@ const Signup = () => {
                                 <Input placeholder="비밀번호를 다시 입력해주세요!" type="password" value={pwdCheck} onChange={onChangepwdCheck}/>
                             </div>
                         </div>
-                        <LoginBtn>회원가입</LoginBtn>
+                        <LoginBtn onClick={siteSignup}>회원가입</LoginBtn>
                     </ContentsContainer>
                 </LoginContainer>
             </div>

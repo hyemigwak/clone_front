@@ -5,12 +5,14 @@ import axios from 'axios';
 //actions
 const LOG_IN = "LOG_IN"; //로그인
 const LOG_OUT = "LOG_OUT"; //로그아웃
+const LOGIN_CHECK = 'LOGIN_CHECK';
 const GET_USER = "GET_USER"; //유저정보 가져오기
 
 
 //actionCreators
 const logIn = createAction(LOG_IN, (user) => ({user}));
 const logOut = createAction(LOG_OUT, (user) => ({user}));
+const loginCheck = createAction(LOGIN_CHECK, (session) => ({session}));
 const getUser = createAction(GET_USER, (user) => ({user}));
 
 
@@ -22,7 +24,8 @@ const initialState = {
 
 
 
-const mockUserAPl = 'https://run.mocky.io/v3/ce3bcb61-6cb3-471d-bc40-e3243360b529'
+// const mockUserAPl = 'https://run.mocky.io/v3/ce3bcb61-6cb3-471d-bc40-e3243360b529'
+
 
 //로그인api
 const loginAPI = (username,pwd) => {
@@ -98,6 +101,9 @@ const SignUPApi = (username,pwd) => {
 
 //Reducer
 export default handleActions({
+    [LOGIN_CHECK]: (state,action) => produce(state,(draft) => {
+        draft.is_login = action.payload.session;
+    }),
     [LOG_IN]: (state,action) => produce(state,(draft) => {
         draft.user = action.payload.user;
         draft.is_login = true;
@@ -115,6 +121,7 @@ export default handleActions({
 
 //action creator export
 const actionCreators = {
+    loginCheck,
     logIn,
     logOut,
     getUser,

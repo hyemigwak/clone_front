@@ -2,8 +2,9 @@ import React,{useEffect, useState} from "react";
 import {Route} from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
-import Home from "../pages/Home";
+import { actionCreators as userActions } from "../redux/modules/user";
 
+import Home from "../pages/Home";
 import "./App.css";
 import Header from "../components/Header";
 import Detail from "../pages/Detail";
@@ -11,20 +12,20 @@ import Footer from "../components/Footer";
 import Top from "../components/Top";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 function App() {
+  const dispatch = useDispatch()
   const is_login = useSelector((state)=>state.user.is_login)
-  const [isSession, setIsSession] = useState(is_login)
   useEffect(()=>{
     const is_session = sessionStorage.getItem('token') ? true : false;
-    setIsSession(is_session)
-  },[is_login])
+    dispatch(userActions.loginCheck(is_session))
+  },[])
   return (
     <>
-    <Top is_login={isSession}/>
+    <Top is_login={is_login}/>
     <Header />
       <ConnectedRouter history={history}>
         <Route path="/" exact component={Home} />

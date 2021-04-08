@@ -3,6 +3,7 @@ import {Route} from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 import { actionCreators as userActions } from "../redux/modules/user";
+import AddProduct from "../pages/AddProduct";
 
 import Home from "../pages/Home";
 import "./App.css";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/product/:id" exact component={Detail} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup}/>
+        <Route path="/add" exact component={AddProduct}/>
       </ConnectedRouter>
       <Footer/>
 

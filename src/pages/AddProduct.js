@@ -25,17 +25,13 @@ const AddProduct = () => {
     const onChangeimage = useCallback((e) => setImage(e.target.value),[]);
     const onChangetitle = useCallback((e) => setTitle(e.target.value),[]);
     const onChangelocation = useCallback((e) => setLocation(e.target.value),[]);
-    const onChangestatus = useCallback((e) => setStatus(e.target.value),[]);
-    const onChangetradable = useCallback((e) => setTradable(e.target.value),[]);
+    const onChangestatus = useCallback((e) => setStatus(e.target.id),[]);
+    const onChangetradable = useCallback((e) => setTradable(e.target.id),[]);
     const onChangeprice = useCallback((e) => setPrice(e.target.value),[]);
-    const onChangedeliver = useCallback((e) => setDeliver(e.target.value),[]);
+    const onChangedeliver = useCallback((e) => setDeliver(e.target.checked),[]);
     const onChangedescription = useCallback((e) => setDescription(e.target.value),[]);
     const onChangekeyword = useCallback((e) => setKeyword(e.target.value),[]);
     const onChangenum = useCallback((e) => setNum(e.target.value),[]);
-
- 
-
-
 
     const siteAddProduct = () => {
         // const product_info = 
@@ -111,12 +107,8 @@ const AddProduct = () => {
                     </LeftList>
                     <StatusRight>
                         <OnlyFlex>
-                            <input type="radio" id="used" name="status" value="중고상품" checked onChange={onChangestatus} value={status}/>
+                            <input type="checkbox" id="used" name="status" value="중고상품" onChange={onChangestatus} value={status}/>
                             <label htmlFor="used">중고상품</label>
-                        </OnlyFlex>
-                        <OnlyFlex>
-                            <input type="radio" id="new" name="status" value="새상품" onChange={onChangestatus} value={status}/>
-                            <label htmlFor="new">새상품</label>
                         </OnlyFlex>
                     </StatusRight>
                 </Status>
@@ -126,12 +118,8 @@ const AddProduct = () => {
                     </LeftList>
                     <StatusRight>
                         <OnlyFlex>
-                            <input type="radio" id="tradable" name="trade" value="교환불가" checked onChange={onChangetradable} value={tradable} />
+                            <input type="checkbox" id="tradapossible" name="trade" value="교환불가" onChange={onChangetradable} value={tradable} />
                             <label htmlFor="used">교환불가</label>
-                        </OnlyFlex>
-                        <OnlyFlex>
-                            <input type="radio" id="nottrade" name="trade" value="교환가능" onChange={onChangetradable} value={tradable}/>
-                            <label htmlFor="new">교환가능</label>
                         </OnlyFlex>
                     </StatusRight>
                 </Status>

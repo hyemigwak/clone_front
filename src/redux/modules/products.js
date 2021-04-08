@@ -41,16 +41,16 @@ const addProductsAPI = (data) => {
           'Access-Control-Allow-Origin' : '*'
       },
       data: {
-          "product_image":image,
-          "name":title,
-          "location":location,
-          "used":status,
-          "tradable":tradable,
-          "qty":num,
-          "keyword":keyword,
-          "free_shipping":deliver,
-          "price":price,
-          "description":description,
+          // "product_image":"https://media.bunjang.co.kr/product/151063431_1_1617867108_w856.jpg",
+          // "name":title,
+          // "location":location,
+          // "used":status,
+          // "tradable":tradable,
+          // "qty":num,
+          // "keyword":keyword,
+          // "free_shipping":deliver,
+          // "price":price,
+          // "description":description,
       }
     }).then((res)=>{
       console.log(res);

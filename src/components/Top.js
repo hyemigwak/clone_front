@@ -9,7 +9,7 @@ import { history } from "../redux/configureStore";
 
 const Top = (props) => {
   const dispatch = useDispatch()
-  const is_login = useSelector(state => state.user.is_login);
+  const {is_login} = props
 
   const siteLogOut = () => {
     dispatch(userActions.logOutApi());

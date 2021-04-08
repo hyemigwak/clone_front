@@ -49,7 +49,7 @@ const Header = () => {
                 <img src={mystore} alt="mystore" />
                 내상점
               </HeaderRightA>
-              <HeaderRightA>
+              <HeaderRightA onClick={()=>{history.push("/add")}}>
                 <img src={sell} alt="mystore" />
                 판매하기
               </HeaderRightA>

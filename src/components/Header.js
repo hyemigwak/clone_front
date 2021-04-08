@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import header_logo from "../image/header-logo.svg";
 import search from "../image/search.png";
@@ -8,6 +8,66 @@ import sell from "../image/sell.png";
 import hbg from "../image/hbg.png";
 import arrowRight from "../image/arrowRight.png";
 import { history } from "../redux/configureStore";
+
+const Header = () => {
+
+  const [keyword, setKeyword] = useState('')
+  const onChangeSearch = useCallback((e)=>setKeyword(e.target.value),[])
+  const onSearch = () =>{
+    history.push(`/search/${keyword}`)
+  }
+  const onSubmit = (e) =>{
+    if(e.key==='Enter'){
+      history.push(`/search/${keyword}`)
+    }
+  }
+  return (
+      <MainHeader>
+        <MainHeaderContainer>
+          <MainHeaderTop>
+            <LogoA onClick={()=>history.push('/')}>
+              <img src={header_logo} alt="logo" />
+            </LogoA>
+            <MainHeaderMiddle>
+              <MainHeaderMiddleContainer>
+                <input type="text" 
+                placeholder="상품명, 지역명, @상점명 입력" 
+                value={keyword} 
+                onChange={onChangeSearch} 
+                onKeyPress={onSubmit}/>
+                <SearchA>
+                  <img src={search} alt="search" onClick={onSearch} />
+                </SearchA>
+              </MainHeaderMiddleContainer>
+            </MainHeaderMiddle>
+            <MainHeaderRight>
+              <TalkButton>
+                <img src={talk} alt="talk" />
+                번개톡
+              </TalkButton>
+              <HeaderRightA>
+                <img src={mystore} alt="mystore" />
+                내상점
+              </HeaderRightA>
+              <HeaderRightA>
+                <img src={sell} alt="mystore" />
+                판매하기
+              </HeaderRightA>
+            </MainHeaderRight>
+          </MainHeaderTop>
+        <MainHeaderBottom>
+                <Hambuger>
+                    <img src={hbg} alt="menu"/>
+                </Hambuger>
+                <SellerInfoA>
+                    <b>번개장터 판매자센터</b>
+                    <img src={arrowRight} alt="arrowRight"/>
+                </SellerInfoA>
+        </MainHeaderBottom>
+        </MainHeaderContainer>
+      </MainHeader>
+  );
+};
 
 const MainHeader = styled.div`
   position: sticky;
@@ -149,49 +209,5 @@ const SellerInfoA = styled.a`
         margin-left: 5px;
     }
 `
-const Header = () => {
-  return (
-      <MainHeader>
-        <MainHeaderContainer>
-          <MainHeaderTop>
-            <LogoA onClick={()=>history.push('/')}>
-              <img src={header_logo} alt="logo" />
-            </LogoA>
-            <MainHeaderMiddle>
-              <MainHeaderMiddleContainer>
-                <input type="text" placeholder="상품명, 지역명, @상점명 입력" />
-                <SearchA>
-                  <img src={search} alt="search" />
-                </SearchA>
-              </MainHeaderMiddleContainer>
-            </MainHeaderMiddle>
-            <MainHeaderRight>
-              <TalkButton>
-                <img src={talk} alt="talk" />
-                번개톡
-              </TalkButton>
-              <HeaderRightA>
-                <img src={mystore} alt="mystore" />
-                내상점
-              </HeaderRightA>
-              <HeaderRightA>
-                <img src={sell} alt="mystore" />
-                판매하기
-              </HeaderRightA>
-            </MainHeaderRight>
-          </MainHeaderTop>
-        <MainHeaderBottom>
-                <Hambuger>
-                    <img src={hbg} alt="menu"/>
-                </Hambuger>
-                <SellerInfoA>
-                    <b>번개장터 판매자센터</b>
-                    <img src={arrowRight} alt="arrowRight"/>
-                </SellerInfoA>
-        </MainHeaderBottom>
-        </MainHeaderContainer>
-      </MainHeader>
-  );
-};
 
 export default Header;

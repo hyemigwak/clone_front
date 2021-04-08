@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import {Route} from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
@@ -11,12 +11,20 @@ import Footer from "../components/Footer";
 import Top from "../components/Top";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import { useSelector } from "react-redux";
+
 
 
 function App() {
+  const is_login = useSelector((state)=>state.user.is_login)
+  const [isSession, setIsSession] = useState(is_login)
+  useEffect(()=>{
+    const is_session = sessionStorage.getItem('token') ? true : false;
+    setIsSession(is_session)
+  },[is_login])
   return (
     <>
-    <Top />
+    <Top is_login={isSession}/>
     <Header />
       <ConnectedRouter history={history}>
         <Route path="/" exact component={Home} />

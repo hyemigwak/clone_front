@@ -1,9 +1,54 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import styled from "styled-components";
 import xregister from "../image/xregister.svg"
 import camera from "../image/camera.svg";
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators as productActions } from "../redux/modules/products";
+import { history } from "../redux/configureStore";
+
 
 const AddProduct = () => {
+    const dispatch = useDispatch();
+    const is_login = useSelector(state => state.user.is_login);
+
+    const [image, setImage] = React.useState("");
+    const [title, setTitle] = React.useState("");
+    const [location, setLocation] = React.useState("");
+    const [status, setStatus] = React.useState("");
+    const [tradable, setTradable] = React.useState("");
+    const [price, setPrice] = React.useState("");
+    const [deliver, setDeliver] = React.useState("");
+    const [description, setDescription] = React.useState("");
+    const [keyword, setKeyword] = React.useState("");
+    const [num, setNum] = React.useState("");
+
+    const onChangeimage = useCallback((e) => setImage(e.target.value),[]);
+    const onChangetitle = useCallback((e) => setTitle(e.target.value),[]);
+    const onChangelocation = useCallback((e) => setLocation(e.target.value),[]);
+    const onChangestatus = useCallback((e) => setStatus(e.target.value),[]);
+    const onChangetradable = useCallback((e) => setTradable(e.target.value),[]);
+    const onChangeprice = useCallback((e) => setPrice(e.target.value),[]);
+    const onChangedeliver = useCallback((e) => setDeliver(e.target.value),[]);
+    const onChangedescription = useCallback((e) => setDescription(e.target.value),[]);
+    const onChangekeyword = useCallback((e) => setKeyword(e.target.value),[]);
+    const onChangenum = useCallback((e) => setNum(e.target.value),[]);
+
+ 
+
+
+
+    const siteAddProduct = () => {
+        // const product_info = 
+        dispatch(productActions.addProductsAPI());
+    }
+
+    useEffect(()=>{
+        if(!is_login){
+            return history.replace("/login");
+        }
+    },[])
+
+
     return (
         <Container>
             <AddContainer>
@@ -20,7 +65,7 @@ const AddProduct = () => {
                                 <img style={{width:"25px", height:"25px"}} src={camera} alt="카메라티콘"/>
                                 <span>이미지 등록</span>
                             </div>
-                            <input type="file"/>
+                            <input type="file" onChange={onChangeimage} value={image}/>
                         </Imageupload>
                         <ImageText>
                             <p><b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b></p>
@@ -39,7 +84,7 @@ const AddProduct = () => {
                     <RightSide>
                         <SubjectLeft>
                             <Inputbox>
-                                <Input placeholder="상품 제목을 입력해주세요."/>
+                                <Input placeholder="상품 제목을 입력해주세요." value={title} onChange={onChangetitle}/>
                                 <a target="_blank" href="https://m.bunjang.co.kr/customer/faq/2?id=220">거래금지품목</a>
                             </Inputbox>
                             <div style={{marginLeft:"1.5rem"}}>
@@ -57,7 +102,7 @@ const AddProduct = () => {
                         거래지역<span>*</span>
                     </LocationLeft>
                     <LocationRight>
-                        <input placeholder="선호 거래지역을 적어주세요." type="text"/>
+                        <input placeholder="선호 거래지역을 적어주세요." type="text" onChange={onChangelocation} value={location}/>
                     </LocationRight>
                 </SellingLocation>
                 <Status>
@@ -66,12 +111,12 @@ const AddProduct = () => {
                     </LeftList>
                     <StatusRight>
                         <OnlyFlex>
-                            <input type="radio" id="used" name="status" value="중고상품" checked/>
-                            <label for="used">중고상품</label>
+                            <input type="radio" id="used" name="status" value="중고상품" checked onChange={onChangestatus} value={status}/>
+                            <label htmlFor="used">중고상품</label>
                         </OnlyFlex>
                         <OnlyFlex>
-                            <input type="radio" id="new" name="status" value="새상품"/>
-                            <label for="new">새상품</label>
+                            <input type="radio" id="new" name="status" value="새상품" onChange={onChangestatus} value={status}/>
+                            <label htmlFor="new">새상품</label>
                         </OnlyFlex>
                     </StatusRight>
                 </Status>
@@ -81,12 +126,12 @@ const AddProduct = () => {
                     </LeftList>
                     <StatusRight>
                         <OnlyFlex>
-                            <input type="radio" id="tradable" name="trade" value="교환불가" checked/>
-                            <label for="used">교환불가</label>
+                            <input type="radio" id="tradable" name="trade" value="교환불가" checked onChange={onChangetradable} value={tradable} />
+                            <label htmlFor="used">교환불가</label>
                         </OnlyFlex>
                         <OnlyFlex>
-                            <input type="radio" id="nottrade" name="trade" value="교환가능"/>
-                            <label for="new">교환가능</label>
+                            <input type="radio" id="nottrade" name="trade" value="교환가능" onChange={onChangetradable} value={tradable}/>
+                            <label htmlFor="new">교환가능</label>
                         </OnlyFlex>
                     </StatusRight>
                 </Status>
@@ -96,12 +141,12 @@ const AddProduct = () => {
                     </LeftList>
                     <PriceRight>
                         <PriceLine>
-                            <input type="number" placeholder="숫자만 입력해주세요."/>원
+                            <input type="number" placeholder="숫자만 입력해주세요." onChange={onChangeprice} value={price}/>원
                         </PriceLine>
                         <div style={{display:"flex", marginTop:"0px"}}>
                             <OnlyFlex>
-                                <CheckboxInput type="checkbox" id="deliverfee" name="pricearea" value="배송비 포함" />
-                                <label for="used">배송비 포함</label>
+                                <CheckboxInput type="checkbox" id="deliverfee" name="pricearea" value="배송비 포함" onChange={onChangedeliver} value={deliver} />
+                                <label htmlFor="used">배송비 포함</label>
                             </OnlyFlex>
                         </div>
                     </PriceRight>
@@ -111,7 +156,7 @@ const AddProduct = () => {
                         설명
                     </LeftList>
                     <DescRight>
-                        <textarea placeholder="상품 설명을 입력해주세요." rows="6" />
+                        <textarea placeholder="상품 설명을 입력해주세요." rows="6" onChange={onChangedescription} value={description}/>
                         <DescBottom>
                             <span>혹시 <a target="_blank" href="https://m.bunjang.co.kr/customer/notice?id=607">카카오톡 ID</a>를 적으셨나요?</span>
                             <div>0/2000</div>
@@ -124,7 +169,7 @@ const AddProduct = () => {
                     </LeftList>
                     <TagRight>
                         <div>
-                            <input type="text" placeholder="연관태그를 입력해주세요.(최대 5개)"/>
+                            <input type="text" placeholder="연관태그를 입력해주세요.(최대 5개)" onChange={onChangekeyword} value={keyword}/>
                         </div>
                         <div style={{marginTop:"20px"}}>
                             <p>- 태그는 띄어쓰기로 구분되며 최대 9자까지 입력할 수 있습니다.</p>
@@ -139,12 +184,12 @@ const AddProduct = () => {
                         수량
                     </LeftList>
                     <CountRight>
-                        <input type="number" defaultValue="1"/>개
+                        <input type="number" defaultValue="1" onChange={onChangenum} value={num}/>개
                     </CountRight>
                 </Count> 
             </AddContainer>
             <Btnarea>
-                <button>등록하기</button>
+                <button onClick={siteAddProduct}>등록하기</button>
             </Btnarea>
 
         </Container>
@@ -194,8 +239,8 @@ const ImageRight = styled.div`
     width: 856px;
     height: 346px;
     align-items: center;
-    vetical-align: middle;
-    padding: 20px; 0px 20px;
+    vertical-align: middle;
+    padding: 20px 0px;
     box-sizing: border-box;
     
 `;
@@ -220,9 +265,9 @@ const Imageupload = styled.div`
         display:flex;
         align-items: center;
         justify-content:center;
-        position: absolute;
-        top: 430px;
-        left: 410px;
+        position: relative;
+        top: 85px;
+        left: -5px;
     }
     span {
         margin-left: 4px;
@@ -278,7 +323,7 @@ const Input = styled.input`
     height: 3rem;
     padding: 0px 1rem;
     border: 1px solid rgb(195, 194, 204);
-    border-box: box-sizing;
+    box-sizing: border-box;
     align-items:center;
 `;
 
@@ -407,6 +452,7 @@ const PriceLine = styled.div`
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
 `;
 
 const Desc = styled.div`

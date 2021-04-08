@@ -12,8 +12,7 @@ const Top = (props) => {
   const is_login = useSelector(state => state.user.is_login);
 
   const siteLogOut = () => {
-    dispatch(userActions.logOut());
-    history.replace("/");
+    dispatch(userActions.logOutApi());
   }
 
   const [modalOpen, setModalOpen] = useState(false);

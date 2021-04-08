@@ -25,8 +25,8 @@ const AddProduct = () => {
     const onChangeimage = useCallback((e) => setImage(e.target.value),[]);
     const onChangetitle = useCallback((e) => setTitle(e.target.value),[]);
     const onChangelocation = useCallback((e) => setLocation(e.target.value),[]);
-    const onChangestatus = useCallback((e) => setStatus(e.target.id),[]);
-    const onChangetradable = useCallback((e) => setTradable(e.target.id),[]);
+    const onChangestatus = useCallback((e) => setStatus(e.target.checked),[]);
+    const onChangetradable = useCallback((e) => setTradable(e.target.checked),[]);
     const onChangeprice = useCallback((e) => setPrice(e.target.value),[]);
     const onChangedeliver = useCallback((e) => setDeliver(e.target.checked),[]);
     const onChangedescription = useCallback((e) => setDescription(e.target.value),[]);
@@ -34,8 +34,7 @@ const AddProduct = () => {
     const onChangenum = useCallback((e) => setNum(e.target.value),[]);
 
     const siteAddProduct = () => {
-        // const product_info = 
-        dispatch(productActions.addProductsAPI());
+        dispatch(productActions.addProductsAPI(title,location,status,tradable,price,deliver,description,keyword,num));
     }
 
     useEffect(()=>{

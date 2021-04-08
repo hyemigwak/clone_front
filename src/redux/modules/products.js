@@ -30,27 +30,34 @@ const getProductsAPI = () => {
   };
 };
 
-const addProductsAPI = (data) => {
+const addProductsAPI = (title,location,status,tradable,price,deliver,description,keyword,num) => {
   return function (dispatch, getState, {history}){
     axios({
       method: "POST",
-      url: "http://15.165.158.39/api/products",
+      url: "http://15.165.158.39/api/products/new",
       headers: {
           "Accept": "application/json",
           "Content-Type":"application/json;charset=UTF-8",
           'Access-Control-Allow-Origin' : '*'
       },
       data: {
-          // "product_image":"https://media.bunjang.co.kr/product/151063431_1_1617867108_w856.jpg",
-          // "name":title,
-          // "location":location,
-          // "used":status,
-          // "tradable":tradable,
-          // "qty":num,
-          // "keyword":keyword,
-          // "free_shipping":deliver,
-          // "price":price,
-          // "description":description,
+          "product_image":"https://media.bunjang.co.kr/product/151063431_1_1617867108_w856.jpg",
+          "name":title,
+          "location":location,
+          "used":status,
+          "tradable":tradable,
+          "qty":parseInt(num),
+          "keyword":keyword,
+          "free_shipping":deliver,
+          "price":parseInt(price),
+          "description":description,
+          "num_faved": 32,
+          "num_item_view": 1556,
+          "num_comment": 0,
+          "user_name" : "LEESYARD",
+          "update_time":1616119571,
+          "profile_image": "https://media.bunjang.co.kr/images/crop/561950756_w%7Bres%7D.jpg",
+          "description_for_detail": "한번 착용한 상품입니다."
       }
     }).then((res)=>{
       console.log(res);
@@ -58,11 +65,7 @@ const addProductsAPI = (data) => {
       history.push("/");
     }).catch(error=>{
       console.log(error);
-    });
-
-
-
-  
+    });  
   };
 };
 

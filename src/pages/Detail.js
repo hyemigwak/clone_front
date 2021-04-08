@@ -14,7 +14,7 @@ const Detail = (props) => {
     const id = props.match.params.id;
     const products = useSelector((state) => state.products.product_list);
     const is_loading = useSelector((state) => state.products.is_loading);
-    const products_idx = products.findIndex((p) => p.pid === id);
+    const products_idx = products.findIndex((p) => p.pid === Number(id));
     const post = products[products_idx];
 
     useEffect(()=>{
